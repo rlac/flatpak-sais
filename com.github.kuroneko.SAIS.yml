@@ -1,0 +1,46 @@
+app-id: com.github.kuroneko.SAIS
+branch: stable
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
+command: /app/strange
+finish-args:
+  - --socket=x11
+  - --share=ipc
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --device=dri
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - '*.a'
+  - '*.la'
+modules:
+  - name: physfs
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+    - -DCMAKE_INSTALL_PREFIX=/app
+    - -DCMAKE_BUILD_TYPE=Release
+    - -DPHYSFS_BUILD_TEST=OFF
+    sources:
+      - type: archive
+        url: 'http://icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2'
+        sha1: 6a15c458898d0570101d8f173201cde9ced78df7
+  - name: sais
+    buildsystem: cmake
+    sources:
+      - type: git
+        url: https://github.com/kuroneko/sais.git
+        tag: v1.6.3
+        commit: 5dc9f5c2abc966cc07048b7579c3a294c2304080
+      - type: file
+        path: com.github.kuroneko.SAIS.desktop
+      - type: file
+        path: com.github.kuroneko.SAIS.png
+      - type: file
+        path: com.github.kuroneko.SAIS.metainfo.xml
+    post-install:
+      - install -D -m 644 -t $FLATPAK_DEST/share/metainfo com.github.kuroneko.SAIS.metainfo.xml
+      - install -D -m 644 -t $FLATPAK_DEST/share/applications com.github.kuroneko.SAIS.desktop
+      - install -D -m 644 -t $FLATPAK_DEST/share/icons/hicolor/128x128/apps com.github.kuroneko.SAIS.png

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.github.kuroneko.SAIS</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0</project_license>
+    <name>Strange Adventures in Infinite Space (GPL)</name>
+    <summary></summary>
+    <description></description>
+    <launchable type="desktop-id">com.github.kuroneko.SAIS.desktop</launchable>
+    <releases>
+        <release version="1.6.3" date="2020-10-14"/>
+    </releases>
+    <content_rating type="oars-1.1"/>
+    <url type="homepage">https://github.com/kuroneko/sais</url>
+    <developer_name></developer_name>
+</component>

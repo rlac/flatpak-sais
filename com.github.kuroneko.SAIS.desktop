@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Strange Adventures in Infinite Space
+Exec=/app/strange
+Type=Application
+Icon=com.github.kuroneko.SAIS
+Categories=Game;
